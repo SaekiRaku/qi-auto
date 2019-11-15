@@ -1,0 +1,38 @@
+{
+  "name": "@qiqi1996/qi-auto",
+  "version": "1.1.4",
+  "description": "A tool help you generate config object based on directory structure for webpack, rollup, parcel, vue-router, etc.",
+  "main": "dist/qi-auto.js",
+  "module": "dist/qi-auto.es.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "rollup": "^1.26.5",
+    "vuepress": "^1.2.0"
+  },
+  "scripts": {
+    "start": "node -r esm bootstrap.js develop",
+    "dev": "node -r esm bootstrap.js develop",
+    "build": "node -r esm bootstrap.js build",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:publish": "./publish-docs.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SaekiRaku/qi-auto.git"
+  },
+  "keywords": [
+    "webpack",
+    "rollup",
+    "parcel",
+    "automation"
+  ],
+  "author": "qiqi1996",
+  "license": "MIT"
+}
