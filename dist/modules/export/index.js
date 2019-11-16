@@ -90,24 +90,24 @@ class Exporter {
     once() {
         for (let i in this._directorys) {
             let p = this._directorys[i];
-            this._writeFiles(path.resolve(p, "index.js"), this._generate(p));
+            this._writeFiles(path.resolve(p, this._options.outputFormat), this._generate(p));
         }
     }
 
     watch() {
         for (let i in this._directorys) {
             let p = this._directorys[i];
-            this._writeFiles(path.resolve(p, "index.js"), this._generate(p));
+            this._writeFiles(path.resolve(p, this._options.outputFormat), this._generate(p));
 
             let watcher = fs.watch(p, {
                 recursive: true
             });
             watcher.addListener("change", (() => {
                 return (type, filename) => {
-                    if (filename == "index.js") {
+                    if (filename == this._options.outputFormat) {
                         return;
                     }
-                    this._writeFiles(path.resolve(p, "index.js"), this._generate(p));
+                    this._writeFiles(path.resolve(p, this._options.outputFormat), this._generate(p));
                 }
             })());
 
@@ -167,8 +167,8 @@ class Exporter {
 
     async _generate(dir) {
 
-        if (fs.existsSync(path.resolve(dir, "index.js"))) {
-            let flag = await this._readFlag(path.resolve(dir, "index.js"));
+        if (fs.existsSync(path.resolve(dir, this._options.outputFormat))) {
+            let flag = await this._readFlag(path.resolve(dir, this._options.outputFormat));
             if (flag != FLAG_STRING) {
                 return null;
             }
@@ -187,11 +187,11 @@ class Exporter {
             let f = files[i];
             let extname = path.extname(f.name);
             let basename = path.basename(f.name, extname);
-            if (f.name == "index.js") {
+            if (f.name == this._options.outputFormat) {
                 continue;
             }
             if (f.isDirectory()) {
-                if (fs.existsSync(path.resolve(dir, f.name, "index.js"))) {
+                if (fs.existsSync(path.resolve(dir, f.name, this._options.outputFormat))) {
                     result.imports.push({
                         importName: basename,
                         importPath: "./" + f.name + "/index.js"
@@ -281,9 +281,8 @@ class Exporter {
 
 function index (options) {
     let opts = Object.assign({}, options);
-    if (!opts || !opts.type) {
-        opts.type = "esm";
-    }
+    opts.name = opts.name || "index.js";
+    opts.type = opts.type || "esm";
     let exporter = new Exporter(opts);
     exporter.addDirectorys(this.filtered.length ? this.filtered : this.files);
     return exporter;

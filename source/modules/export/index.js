@@ -8,9 +8,8 @@ import Exporter from "./base.js";
 
 export default function (options) {
     let opts = Object.assign({}, options);
-    if (!opts || !opts.type) {
-        opts.type = "esm";
-    }
+    opts.name = opts.name || "index.js";
+    opts.type = opts.type || "esm";
     let exporter = new Exporter(opts);
     exporter.addDirectorys(this.filtered.length ? this.filtered : this.files);
     return exporter;

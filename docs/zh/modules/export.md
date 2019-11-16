@@ -81,18 +81,25 @@ export default {
 
 ## 配置
 
+### options.name
+
+> 类型: String  
+> 默认值: "index.js"  
+
+指出入口文件应使用的名称。具体例子，比如提供了 `index.jsx`，那么 `qi-auto-export` 将仅检测 `index.jsx` 文件以进行 `import` 和 `export`。
+
 ### options.type
 
-> 类型：String
-> 可用值："esm" | "cjs"
-> 默认值："esm"
+> 类型：String  
+> 可用值："esm" | "cjs"  
+> 默认值："esm"  
 
 指示应使用哪种语法生成。对于ES6模块语法，使用 `esm` 可以使用 `import` 和 `export default` 生成代码，对于CommonJS语法使用 `cjs` 可以使用 `require` 和 `module.exports` 生成代码。
 
 ### options.inject
 
-> 可选的
-> 类型：String | Function
+> 可选的  
+> 类型：String | Function  
 
 该内容将在每个文件的 `import` 和 `export` 之间插入。
 

@@ -81,18 +81,25 @@ export default {
 
 ## Options
 
+### options.name
+
+> Type: String  
+> Default: "index.js"  
+
+Indicate what name should be used for entry files. For example, if `index.jsx` was provided, `qi-auto-export` will only detect `index.jsx` to `import` and `export`.
+
 ### options.type
 
-> Type: String
-> Available: "esm" | "cjs"
-> Default: "esm"
+> Type: String  
+> Available: "esm" | "cjs"  
+> Default: "esm"  
 
 Indicate what syntax should be used for generating. Use `esm` for ES6 Module syntax to generate code with `import` and `export default` or use "cjs" for CommonJS syntax to generate code with `require` and `module.exports`.
 
 ### options.inject
 
-> Optional
-> Type: String | Function
+> Optional  
+> Type: String | Function  
 
 This content will inject between `import` and `export` of each file.
 
