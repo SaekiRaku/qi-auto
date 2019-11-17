@@ -8,17 +8,24 @@
     "example": "example"
   },
   "dependencies": {
+    "@rollup/plugin-strip": "^1.3.1",
     "glob": "^7.1.6"
   },
   "devDependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
     "esm": "^3.2.25",
+    "mocha": "^6.2.2",
     "rollup": "^1.26.5",
+    "rollup-plugin-babel": "^4.3.3",
     "vuepress": "^1.2.0"
   },
   "scripts": {
     "start": "node -r esm bootstrap.js develop",
     "dev": "node -r esm bootstrap.js develop",
     "build": "node -r esm bootstrap.js build",
+    "test": "mocha --require @babel/register,./mocha-global.js ./source/**/*.test.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:publish": "./publish-docs.sh"

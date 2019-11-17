@@ -1,10 +1,28 @@
 import path from "path";
 import common from "../common";
 
+import strip from "@rollup/plugin-strip";
+import babel from 'rollup-plugin-babel';
+
+const plugins = [
+    strip(),
+    babel({
+        babelrc: false,
+        "presets": [
+            ["@babel/preset-env", {
+                targets: {
+                    node: "12.13.0"
+                }
+            }]
+        ]
+    })
+]
+
 export default {
     "qi-auto": {
         input: {
             input: path.resolve(common.path.SOURCE, "index.js"),
+            plugins
         },
         output: [{
                 name: "qiAuto",
@@ -21,6 +39,7 @@ export default {
     "module-webpack-entry": {
         input: {
             input: path.resolve(common.path.SOURCE, "modules/webpack-entry/index.js"),
+            plugins
         },
         output: [{
             name: "webpackEntry",
@@ -35,16 +54,18 @@ export default {
     "module-export": {
         input: {
             input: path.resolve(common.path.SOURCE, "modules/export/index.js"),
+            plugins
         },
         output: [{
-            name: "export",
-            format: "cjs",
-            file: path.resolve(common.path.DIST, "modules/export/index.js")
-        },
-        {
-            name: "export",
-            format: "esm",
-            file: path.resolve(common.path.DIST, "modules/export/index.es.js")
-        }]
+                name: "export",
+                format: "cjs",
+                file: path.resolve(common.path.DIST, "modules/export/index.js")
+            },
+            {
+                name: "export",
+                format: "esm",
+                file: path.resolve(common.path.DIST, "modules/export/index.es.js")
+            }
+        ]
     }
 }

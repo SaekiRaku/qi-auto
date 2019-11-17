@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import Writeable from "./writeable.js";
 import utils from "../../utils/index.js";
 
 const FLAG_STRING = "// QI-AUTO-EXPORT";
@@ -12,6 +13,7 @@ class Exporter {
     // _throttle = {};
 
     constructor(options) {
+        this._writeable = new Writeable();
         this._directorys = [];
         this._fsWacherMap = {};
         this._throttle = {};
@@ -123,10 +125,14 @@ class Exporter {
 
     async _generate(dir) {
 
-        if (fs.existsSync(path.resolve(dir, this._options.name))) {
-            let flag = await this._readFlag(path.resolve(dir, this._options.name));
+        let entryFilePath = path.resolve(dir, this._options.name)
+
+        if (fs.existsSync(entryFilePath)) {
+            let flag = await this._readFlag(entryFilePath);
             if (flag != FLAG_STRING) {
                 return null;
+            } else {
+                this._writeable.loadCacheFromFile(entryFilePath)
             }
         }
 
@@ -141,11 +147,11 @@ class Exporter {
 
         for (let i in files) {
             let f = files[i]
-            let extname = path.extname(f.name);
-            let basename = path.basename(f.name, extname);
             if (f.name == this._options.name) {
                 continue;
             }
+            let extname = path.extname(f.name);
+            let basename = path.basename(f.name, extname);
             if (f.isDirectory()) {
                 if (fs.existsSync(path.resolve(dir, f.name, this._options.name))) {
                     result.imports.push({
@@ -204,7 +210,7 @@ class Exporter {
         }
         exportStrings += "}";
 
-        result += FLAG_STRING + "\n\n";
+        result += FLAG_STRING + "\n";
         if (this._options.overwriteImport == undefined) {
             result += importStrings + "\n";
         } else {
@@ -220,7 +226,9 @@ class Exporter {
         }
 
         this._throttle[filepath] = setTimeout(() => {
-            fs.writeFileSync(filepath, result.toString());
+            if (this._writeable.check(result.toString(), filepath)) {
+                fs.writeFileSync(filepath, result.toString());
+            }
             delete this._throttle[filepath];
             if (Object.keys(this._throttle).length == 0) {
                 this._eventHandler.dispatch("done");

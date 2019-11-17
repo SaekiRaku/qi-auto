@@ -13,10 +13,14 @@ export default {
         for (let key in CONFIG) {
             console.log(`> Building ${key}...`);
             let config = CONFIG[key];
-            let bundle = await rollup(config.input);
+            let bundle = await rollup(config.input).catch((e) => {
+                console.error(e);
+            });
             for (let i in config.output) {
                 let output = config.output[i];
-                await bundle.write(output);
+                await bundle.write(output).catch((e) => {
+                    console.error(e);
+                });
             }
         }
 
