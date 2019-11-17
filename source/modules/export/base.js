@@ -150,7 +150,7 @@ class Exporter {
                 if (fs.existsSync(path.resolve(dir, f.name, this._options.name))) {
                     result.imports.push({
                         importName: basename,
-                        importPath: "./" + f.name + "/index.js"
+                        importPath: "./" + f.name + "/" + this._options.name
                     });
                     result.exports.push({
                         exportName: basename,
