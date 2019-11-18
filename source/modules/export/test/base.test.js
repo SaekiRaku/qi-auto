@@ -127,7 +127,7 @@ describe("Built-in module of Export", function () {
         })
 
         describe.skip("feature", function () {
-            // This test case may cause bugs when running with others due to the async process, skip it by now, we'll fix it later.
+            // This test case may cause bugs when running with others due to the async process. We will fix it later, for now just skip it.
 
             it("should not overwrite entry file without starting with FLAG_STRING", async function () {
                 await exportOnce({
