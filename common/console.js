@@ -19,6 +19,7 @@ function disable() {
 
 
 export default {
+    original: originalConsole,
     enable,
     disable
 }

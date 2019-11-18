@@ -33,6 +33,7 @@ export default class Writeable {
         let cache = this.cacheMap[targetPath];
         hash.update(data);
         let result = hash.digest("hex");
+
         if (!cache || cache != result) {
             this.cacheMap[targetPath] = result;
             return true;

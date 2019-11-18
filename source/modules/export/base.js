@@ -179,6 +179,7 @@ class Exporter {
     }
 
     async _writeFiles(filepath, content) {
+        console.log(this._writeable.cacheMap);
         if (this._throttle[filepath]) {
             clearTimeout(this._throttle[filepath]);
         }
