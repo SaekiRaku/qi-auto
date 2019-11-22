@@ -3,16 +3,26 @@ import assert from "assert";
 import Base from "../base.js";
 import "@babel/polyfill";
 
-async function exportOnce(options) {
+function exportOnce(fs, options) {
+    fs.mkdirSync("moduleA");
+    fs.mkdirSync("moduleB");
+    fs.writeFileSync("moduleA/a.js", "");
+    fs.writeFileSync("moduleA/b.js", "");
+    fs.writeFileSync("moduleA/c.js", "");
+    fs.writeFileSync("moduleA/index.js", "WON'T BE OVERWRITED");
+    fs.writeFileSync("moduleB/aaa.js", "");
+    fs.writeFileSync("moduleB/bbb.js", "");
+    fs.writeFileSync("moduleB/ccc.js", "");
+
     let auto = new qiauto({
         "export": {
             module: require("../index.js").default,
-            directory: common.path.TEMP,
+            directory: fs.path,
             options
         }
     });
 
-    return await new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         auto["export"].addEventListener("done", () => {
             resolve();
         });
@@ -22,40 +32,28 @@ async function exportOnce(options) {
 
 describe("Built-in module of Export", function () {
 
-    before(function () {
-        common.clean.temp();
-        fs.mkdirSync(common.path.TEMP + "/moduleA");
-        fs.mkdirSync(common.path.TEMP + "/moduleB");
-        fs.mkdirSync(common.path.TEMP + "/moduleC");
-        fs.writeFileSync(common.path.TEMP + "/moduleA/a.js", "");
-        fs.writeFileSync(common.path.TEMP + "/moduleA/b.js", "");
-        fs.writeFileSync(common.path.TEMP + "/moduleA/c.js", "");
-        fs.writeFileSync(common.path.TEMP + "/moduleA/index.js", "WON'T BE OVERWRITED");
-        fs.writeFileSync(common.path.TEMP + "/moduleB/aaa.js", "");
-        fs.writeFileSync(common.path.TEMP + "/moduleB/bbb.js", "");
-        fs.writeFileSync(common.path.TEMP + "/moduleB/ccc.js", "");
-    });
-
-    after(function () {
-        common.clean.temp();
-    });
-
     describe("base", function () {
         describe("options.name", function () {
 
             it("should generate 'index.js' as the entry file as default.", async function () {
-                await exportOnce({
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     filter: /(moduleA,moduleB)/
                 });
-                return assert.equal(fs.existsSync(common.path.TEMP + "/moduleB/index.js"), true);
+                let result = assert.equal(sandbox.existsSync("moduleB/index.js"), true);
+                sandbox.destroy();
+                return result;
             });
 
             it("should generate 'index.jsx' as the entry file when options.name is provided it.", async function () {
-                await exportOnce({
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     name: "index.jsx",
                     filter: /(moduleA,moduleB)/
                 })
-                return assert.equal(fs.existsSync(common.path.TEMP + "/moduleB/index.jsx"), true);
+                let result = assert.equal(sandbox.existsSync("moduleB/index.jsx"), true);
+                sandbox.destroy();
+                return result;
             });
 
         })
@@ -65,21 +63,22 @@ describe("Built-in module of Export", function () {
                 let base = new Base({
                     type: "esm"
                 })
-                assert.equal(base._import("name", "./path.js"), "import name from \"./path.js\";");
+                return assert.equal(base._import("name", "./path.js"), "import name from \"./path.js\";");
             });
 
             it("should generate CommonJS syntax if options.type is provided 'cjs'", function () {
                 let base = new Base({
                     type: "cjs"
                 })
-                assert.equal(base._import("name", "./path.js"), "const name = require(\"./path.js\");");
+                return assert.equal(base._import("name", "./path.js"), "const name = require(\"./path.js\");");
             });
         })
 
         describe("options.inject", function () {
 
             it("should inject the content from function into the entry file.", async function () {
-                await exportOnce({
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     filter: /(moduleA,moduleB)/,
                     inject: function (data) {
                         if (/(moduleB)$/.test(data.directory)) {
@@ -87,23 +86,29 @@ describe("Built-in module of Export", function () {
                         }
                     }
                 });
-                return assert.equal(fs.readFileSync(common.path.TEMP + "/moduleB/index.js").toString(), `// QI-AUTO-EXPORT\nimport aaa from "./aaa.js";\nimport bbb from "./bbb.js";\nimport ccc from "./ccc.js";\n\nconsole.log('inject');\n\nexport default {\n    aaa,\n    bbb,\n    ccc,\n}`);
+                let result = assert.equal(sandbox.readFileSync("moduleB/index.js").toString(), `// QI-AUTO-EXPORT\nimport aaa from "./aaa.js";\nimport bbb from "./bbb.js";\nimport ccc from "./ccc.js";\n\nconsole.log('inject');\n\nexport default {\n    aaa,\n    bbb,\n    ccc,\n}`);
+                sandbox.destroy();
+                return result;
             });
 
             it("should inject the content string into the entry file.", async function () {
-                await exportOnce({
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     filter: /(moduleA,moduleB)/,
                     inject: "console.log('inject');\n"
                 });
-                return assert.equal(fs.readFileSync(common.path.TEMP + "/moduleB/index.js").toString(), `// QI-AUTO-EXPORT\nimport aaa from "./aaa.js";\nimport bbb from "./bbb.js";\nimport ccc from "./ccc.js";\n\nconsole.log('inject');\n\nexport default {\n    aaa,\n    bbb,\n    ccc,\n}`);
+                let result = assert.equal(sandbox.readFileSync("moduleB/index.js").toString(), `// QI-AUTO-EXPORT\nimport aaa from "./aaa.js";\nimport bbb from "./bbb.js";\nimport ccc from "./ccc.js";\n\nconsole.log('inject');\n\nexport default {\n    aaa,\n    bbb,\n    ccc,\n}`);
+                sandbox.destroy();
+                return result;
             });
 
         })
 
         describe("options.overwrite", function () {
 
-            it("should overwrite the import and export with the content from function to the entry file.", async function () {
-                await exportOnce({
+            it("should provide related data correctly", async function () {
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     filter: /(moduleA,moduleB)/,
                     overwriteImport: function () {
                         return "";
@@ -112,49 +117,78 @@ describe("Built-in module of Export", function () {
                         return "";
                     }
                 });
-                return assert.equal(fs.readFileSync(common.path.TEMP + "/moduleB/index.js").toString(), "// QI-AUTO-EXPORT\n\n");
+                let result = assert.equal(sandbox.readFileSync("moduleB/index.js").toString(), "// QI-AUTO-EXPORT\n\n");
+                sandbox.destroy();
+                return result;
+            });
+
+            it("should overwrite the import and export with the content from function to the entry file.", async function () {
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
+                    filter: /(moduleA,moduleB)/,
+                    overwriteImport: function () {
+                        return "";
+                    },
+                    overwriteExport: function () {
+                        return "";
+                    }
+                });
+                let result = assert.equal(sandbox.readFileSync("moduleB/index.js").toString(), "// QI-AUTO-EXPORT\n\n");
+                sandbox.destroy();
+                return result;
             });
 
             it("should overwrite the import and export with the content string to the entry file.", async function () {
-                await exportOnce({
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     filter: /(moduleA,moduleB)/,
                     overwriteImport: "",
                     overwriteExport: ""
                 });
-                return assert.equal(fs.readFileSync(common.path.TEMP + "/moduleB/index.js").toString(), "// QI-AUTO-EXPORT\n\n");
+                let result = assert.equal(sandbox.readFileSync("moduleB/index.js").toString(), "// QI-AUTO-EXPORT\n\n");
+                sandbox.destroy();
+                return result;
             });
 
         })
 
         describe.skip("feature", function () {
-            // This test case may cause bugs when running with others due to the async process. We will fix it later, for now just skip it.
 
             it("should not overwrite entry file without starting with FLAG_STRING", async function () {
-                await exportOnce({
+                const sandbox = new common.sandbox();
+                await exportOnce(sandbox, {
                     filter: /(moduleA,moduleB)/
                 });
-                return assert.equal(fs.readFileSync(common.path.TEMP + "/moduleA/index.js"), "WON'T BE OVERWRITED");
+                let result = assert.equal(sandbox.readFileSync("moduleA/index.js"), "WON'T BE OVERWRITED");
+                sandbox.destroy();
+                return result;
             });
 
             it("should not rewrite the entry file if it's same before and after write.", function (done) {
-                var watcher;;
+                const sandbox = new common.sandbox();
 
-                fs.writeFileSync(common.path.TEMP + "/moduleC/a.js", "");
-                fs.writeFileSync(common.path.TEMP + "/moduleC/index.js", `// QI-AUTO-EXPORT\nimport a from "./a.js";\n\nexport default {\n    a,\n}`);
+                var watcher;
+
+                sandbox.mkdirSync("moduleC");
+                sandbox.writeFileSync("moduleC/a.js", "");
+                sandbox.writeFileSync("moduleC/index.js", `// QI-AUTO-EXPORT\nimport a from "./a.js";\n\nexport default {\n    a,\n}`);
 
                 var timeoutID = setTimeout(() => {
                     watcher.close();
+                    sandbox.destroy();
                     done(assert.ok(true));
                 }, 1000);
 
-                exportOnce({
-                    filter: /(moduleC)/,
-                });
-
-                watcher = fs.watch(common.path.TEMP + "/moduleC/index.js", (type, filename) => {
+                watcher = fs.watch(sandbox.resolvedPath("moduleC/index.js"), (type, filename) => {
+                    common.console.enable();
                     clearTimeout(timeoutID);
                     watcher.close();
+                    sandbox.destroy();
                     done(assert.ok(false, "Entry file was overwrited"));
+                });
+
+                exportOnce(sandbox, {
+                    filter: /(moduleC)/,
                 });
             });
 

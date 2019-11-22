@@ -1,6 +1,6 @@
 {
   "name": "@qiqi1996/qi-auto",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "A tool help you generate config object based on directory structure for webpack, rollup, parcel, vue-router, etc.",
   "main": "dist/qi-auto.js",
   "module": "dist/qi-auto.es.js",
@@ -12,6 +12,7 @@
     "glob": "^7.1.6"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
@@ -19,6 +20,7 @@
     "mocha": "^6.2.2",
     "rollup": "^1.26.5",
     "rollup-plugin-babel": "^4.3.3",
+    "uuid": "^3.3.3",
     "vuepress": "^1.2.0"
   },
   "scripts": {

@@ -1,23 +1,24 @@
-import fs from "fs";
 import assert from "assert";
 import Writeable from "../writeable.js";
 
-const targetPath = common.path.TEMP + "/testFile.js"
-const content = `// QI-AUTO-EXPORT
-import a from "./a.js";
-import b from "./b.js";
-
-export default {
-    a,
-    b
-}
-`
-
 describe("Built-in module of Export", function () {
 
-    afterEach(function () {
-        common.clean.temp();
+    const sandbox = new common.sandbox();
+
+    after(function () {
+        sandbox.destroy();
     });
+
+    const targetPath = sandbox.resolvedPath("testFile.js");
+    const content = 
+        `// QI-AUTO-EXPORT
+        import a from "./a.js";
+        import b from "./b.js";
+
+        export default {
+            a,
+            b
+        }`
 
     describe("Writeable", function () {
         it("should return true if the file on the targetPath doesn't exist.", function () {
@@ -28,7 +29,7 @@ describe("Built-in module of Export", function () {
 
         it("should return false if a same file already exists on the targetPath.", function () {
             const writeable = new Writeable();
-            fs.writeFileSync(targetPath, content);
+            sandbox.writeFileSync("testFile.js", content);
             writeable.loadCacheFromFile(targetPath);
             let result = writeable.check(content, targetPath);
             assert.equal(result, false);
@@ -36,7 +37,7 @@ describe("Built-in module of Export", function () {
 
         it("should return true if a different file exists on the targetPath.", function () {
             const writeable = new Writeable();
-            fs.writeFileSync(targetPath, content + "\nexport {\n    a,\n    b\m}");
+            sandbox.writeFileSync("testFile.js", content + "\nexport {\n    a,\n    b\m}");
             writeable.loadCacheFromFile(targetPath);
             let result = writeable.check(content, targetPath);
             assert.equal(result, true);

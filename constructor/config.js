@@ -14,7 +14,8 @@ const plugins = [
                     node: "12.13.0"
                 }
             }]
-        ]
+        ],
+        "plugins": [["@babel/plugin-proposal-class-properties", { "loose": true }]]
     })
 ]
 

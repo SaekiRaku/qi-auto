@@ -13,6 +13,7 @@ export default class Writeable {
     }
 
     loadCacheFromFile(targetPath) {
+        if (!fs.existsSync(targetPath)) return;
         let data = fs.readFileSync(targetPath).toString();
         let hash = crypto.createHash("md5");
         hash.update(data);
