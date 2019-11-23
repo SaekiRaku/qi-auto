@@ -112,9 +112,12 @@ export default {
     imports: Array,
     // 所有被导入的数据
     // [ { importName: "...", importPath: "..." }, ... ]
-    exports: Array
+    exports: Array,
     // 所有被导出的数据
     // [ { exportName: "...", exportPath: "..." }, ... ]
+    defaultImports: String,
+    defaultExports: String
+    // 从 `imports` and `exports` 生成的原本的导入和导出语句
 }
 ```
 

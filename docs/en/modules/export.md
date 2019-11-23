@@ -112,9 +112,12 @@ If a function was provided, it will be called with one argument pass in which st
     imports: Array,
     // All imports data
     // [ { importName: "...", importPath: "..." }, ... ]
-    exports: Array
+    exports: Array,
     // All exports data
     // [ { exportName: "...", exportPath: "..." }, ... ]
+    defaultImports: String,
+    defaultExports: String
+    // The originally `import` or `export` statement that generate from `imports` and `exports`
 }
 ```
 

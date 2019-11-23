@@ -152,7 +152,7 @@ describe("Built-in module of Export", function () {
 
         })
 
-        describe.skip("feature", function () {
+        describe("feature", function () {
 
             it("should not overwrite entry file without starting with FLAG_STRING", async function () {
                 const sandbox = new common.sandbox();
@@ -164,7 +164,7 @@ describe("Built-in module of Export", function () {
                 return result;
             });
 
-            it("should not rewrite the entry file if it's same before and after write.", function (done) {
+            it.skip("should not rewrite the entry file if it's same before and after write.", function (done) {
                 const sandbox = new common.sandbox();
 
                 var watcher;

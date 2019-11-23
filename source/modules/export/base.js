@@ -193,7 +193,9 @@ class Exporter {
         let context = {
             directory: path.dirname(filepath),
             imports: c.imports,
-            exports: c.exports
+            exports: c.exports,
+            defaultImports: "",
+            defaultExports: ""
         }
         let result = "";
         let importStrings = "";
@@ -210,6 +212,9 @@ class Exporter {
             exportStrings += "    " + this._export(c.exports[i].exportName, c.exports[i].moduleName) + "\n";
         }
         exportStrings += "}";
+
+        context.defaultImports = importStrings;
+        context.defaultExports = exportStrings;
 
         result += FLAG_STRING + "\n";
         if (this._options.overwriteImport == undefined) {
