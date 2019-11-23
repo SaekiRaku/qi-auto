@@ -48,6 +48,12 @@ const config = {
 
 You can get all infomation or helper functions from `this` context. Here is the list of context that you can use.
 
+#### this.directory
+
+* Type: String
+
+The root directory that provided by user.
+
 #### this.files
 
 * Type: Array

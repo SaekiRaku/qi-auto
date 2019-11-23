@@ -45,6 +45,8 @@ function context (task) {
 
   var filtered = filter(files, task.filter);
   return Object.assign(commonContext, {
+    _original: task,
+    directory: task.directory,
     files,
     filtered
   });

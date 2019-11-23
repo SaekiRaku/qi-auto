@@ -48,6 +48,12 @@ const config = {
 
 您可以从 `this` 上下文中获取所有信息或工具函数，以下是您可以使用的上下文列表：
 
+#### this.directory
+
+* Type: String
+
+用户提供的根目录。
+
 #### this.files
 
 * 类型：Array

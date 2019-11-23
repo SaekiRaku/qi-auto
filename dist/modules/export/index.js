@@ -366,6 +366,7 @@ function index (options) {
   opts.name = opts.name || "index.js";
   opts.type = opts.type || "esm";
   let exporter = new Exporter(opts);
+  exporter.addDirectorys(this.directory);
   exporter.addDirectorys(this.filtered.length ? this.filtered : this.files);
   return exporter;
 }
