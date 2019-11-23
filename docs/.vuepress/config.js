@@ -42,6 +42,11 @@ function sidebar(prefix) {
 }
 
 module.exports = {
+    plugins: [
+        '@vuepress/active-header-links',
+        '@vuepress/back-to-top',
+        '@vuepress/nprogress'
+    ],
     title: "Qi Auto",
     description: "A tool help you generate config object based on directory structure for webpack, rollup, parcel, vue-router, etc.",
     base: "/qi-auto/",
