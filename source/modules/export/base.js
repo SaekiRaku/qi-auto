@@ -48,24 +48,30 @@ class Exporter {
     once() {
         for (let i in this._directorys) {
             let p = this._directorys[i];
-            this._writeFiles(path.resolve(p, this._options.name), this._generate(p));
+            this._generate(p).then(data => {
+                this._writeFiles(path.resolve(p, this._options.name), data);
+            })
         }
     }
 
     watch() {
         for (let i in this._directorys) {
             let p = this._directorys[i];
-            this._writeFiles(path.resolve(p, this._options.name), this._generate(p));
+            this._generate(p).then(data => {
+                this._writeFiles(path.resolve(p, this._options.name), data);
+            })
 
             let watcher = fs.watch(p, {
                 recursive: true
             });
             watcher.addListener("change", (() => {
-                return (type, filename) => {
+                return async (type, filename) => {
                     if (filename == this._options.name) {
                         return;
                     }
-                    this._writeFiles(path.resolve(p, this._options.name), this._generate(p));
+                    this._generate(p).then(data => {
+                        this._writeFiles(path.resolve(p, this._options.name), data);
+                    })
                 }
             })());
 
@@ -178,7 +184,7 @@ class Exporter {
         return result;
     }
 
-    async _writeFiles(filepath, content) {
+    _writeFiles(filepath, content) {
         console.log(this._writeable.cacheMap);
         if (this._throttle[filepath]) {
             clearTimeout(this._throttle[filepath]);
@@ -186,7 +192,7 @@ class Exporter {
         if (!content) {
             return false;
         }
-        let c = await content;
+        let c = content;
         if (!c || !c.imports.length || !c.exports.length) {
             return false;
         }
@@ -228,7 +234,7 @@ class Exporter {
         if (this._options.overwriteExport == undefined) {
             result += exportStrings;
         } else {
-            result += utils.extractData(this._options.overwriteExport, content)
+            result += utils.extractData(this._options.overwriteExport, context)
         }
 
         this._throttle[filepath] = setTimeout(() => {
