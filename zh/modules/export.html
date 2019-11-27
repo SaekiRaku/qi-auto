@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>export | Qi Auto</title>
+    <meta name="description" content="一个根据目录结构帮你生成 webpack、rollup、parcel、vue-router 等配置对象的工具。">
+    <script src="http://tajs.qq.com/stats?sId=65846734"></script>
+    
+    <link rel="preload" href="/qi-auto/assets/css/0.styles.d41e1296.css" as="style"><link rel="preload" href="/qi-auto/assets/js/app.64ecc225.js" as="script"><link rel="preload" href="/qi-auto/assets/js/2.240bca11.js" as="script"><link rel="preload" href="/qi-auto/assets/js/24.2c9b250d.js" as="script"><link rel="prefetch" href="/qi-auto/assets/js/10.ba4c0c7b.js"><link rel="prefetch" href="/qi-auto/assets/js/11.685a9337.js"><link rel="prefetch" href="/qi-auto/assets/js/12.54ff49a5.js"><link rel="prefetch" href="/qi-auto/assets/js/13.203ce99a.js"><link rel="prefetch" href="/qi-auto/assets/js/14.06b8c610.js"><link rel="prefetch" href="/qi-auto/assets/js/15.42e1ebcf.js"><link rel="prefetch" href="/qi-auto/assets/js/16.7bfd09ab.js"><link rel="prefetch" href="/qi-auto/assets/js/17.a46c3810.js"><link rel="prefetch" href="/qi-auto/assets/js/18.1fa44c4e.js"><link rel="prefetch" href="/qi-auto/assets/js/19.44287fb2.js"><link rel="prefetch" href="/qi-auto/assets/js/20.c92faf60.js"><link rel="prefetch" href="/qi-auto/assets/js/21.3b38a97e.js"><link rel="prefetch" href="/qi-auto/assets/js/22.b094a19c.js"><link rel="prefetch" href="/qi-auto/assets/js/23.7112cf23.js"><link rel="prefetch" href="/qi-auto/assets/js/25.8b5a244d.js"><link rel="prefetch" href="/qi-auto/assets/js/26.1eece765.js"><link rel="prefetch" href="/qi-auto/assets/js/3.c3f38d17.js"><link rel="prefetch" href="/qi-auto/assets/js/4.4118a250.js"><link rel="prefetch" href="/qi-auto/assets/js/5.4706ecb5.js"><link rel="prefetch" href="/qi-auto/assets/js/6.3bfc0636.js"><link rel="prefetch" href="/qi-auto/assets/js/7.af9f8d4e.js"><link rel="prefetch" href="/qi-auto/assets/js/8.a244375f.js"><link rel="prefetch" href="/qi-auto/assets/js/9.f37b2388.js">
+    <link rel="stylesheet" href="/qi-auto/assets/css/0.styles.d41e1296.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/qi-auto/zh/" class="home-link router-link-active"><!----> <span class="site-name">Qi Auto</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/qi-auto/zh/guide/introduction.html" class="nav-link">入门指南</a></div><div class="nav-item"><a href="/qi-auto/zh/modules/" class="nav-link router-link-active">模块</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/qi-auto/en/modules/export.html" class="nav-link">English</a></li><li class="dropdown-item"><!----> <a href="/qi-auto/zh/modules/export.html" class="nav-link router-link-exact-active router-link-active">简体中文</a></li></ul></div></div> <a href="https://github.com/SaekiRaku/qi-auto" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/qi-auto/zh/guide/introduction.html" class="nav-link">入门指南</a></div><div class="nav-item"><a href="/qi-auto/zh/modules/" class="nav-link router-link-active">模块</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/qi-auto/en/modules/export.html" class="nav-link">English</a></li><li class="dropdown-item"><!----> <a href="/qi-auto/zh/modules/export.html" class="nav-link router-link-exact-active router-link-active">简体中文</a></li></ul></div></div> <a href="https://github.com/SaekiRaku/qi-auto" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>官方模块</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/qi-auto/zh/modules/webpack-entry.html" class="sidebar-link">webpack-entry</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/webpack-entry.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/webpack-entry.html#示例" class="sidebar-link">示例</a></li><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/webpack-entry.html#配置" class="sidebar-link">配置</a></li><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/webpack-entry.html#返回值" class="sidebar-link">返回值</a></li></ul></li><li><a href="/qi-auto/zh/modules/export.html" class="active sidebar-link">export</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/export.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/export.html#示例" class="sidebar-link">示例</a></li><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/export.html#配置" class="sidebar-link">配置</a></li><li class="sidebar-sub-header"><a href="/qi-auto/zh/modules/export.html#返回值" class="sidebar-link">返回值</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>来自社区</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/qi-auto/zh/modules/community-modules.html" class="sidebar-link">社区模块</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="export"><a href="#export" class="header-anchor">#</a> export</h1> <h2 id="概述"><a href="#概述" class="header-anchor">#</a> 概述</h2> <p>自动生成模块的引入和导出文件。</p> <p>这是一个内置模块，因此您无需安装它。但是将来它将迁移到独立的npm软件包中。</p> <h2 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h2> <p>假设您开发了一个库/模块，并且其目录结构如下：</p> <div class="language- extra-class"><pre class="language-text"><code>./src
+├── utils
+│   ├── a.js
+│   ├── b.js
+│   ├── c.js
+│   └── ...js
+└── main
+│   ├── a.js
+│   ├── b.js
+│   ├── c.js
+│   └── ...js
+│
+└── and so many...
+</code></pre></div><p>每个文件夹或js文件都是整个库/模块的一部分。通常，您必须在每个文件夹中放入 <code>入口文件（index.js）</code> 并导入和导出每个代码拆分的部分。以使其他人可以导入您的库/模块。幸运的是，<code>qi-auto-export</code> 可以自动完成这项工作：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> qiauto <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;@qiqi1996/qi-auto&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;AutoExport&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        directory<span class="token punctuation">:</span> __dirname <span class="token operator">+</span> <span class="token string">&quot;/src&quot;</span><span class="token punctuation">,</span>
+        module<span class="token punctuation">:</span> <span class="token string">&quot;export&quot;</span><span class="token punctuation">,</span>
+        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            type<span class="token punctuation">:</span> <span class="token string">&quot;esm&quot;</span><span class="token punctuation">,</span>
+            <span class="token comment">// 使用 ES6 模块语法生成代码（import and export default）</span>
+            <span class="token comment">// 或使用“ cjs”表示CommonJS语法（require and module.exports）</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">qiauto</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">&quot;AutoExport&quot;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 这将检查文件是否更改，并自动重新生成。</span>
+</code></pre></div><p>最后，将在每个文件夹中生成 <code>入口文件（index.js）</code>。它们可能看起来像这样：</p> <div class="language-javascript extra-class"><div class="highlight-lines"><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-javascript"><code><span class="token comment">// ./src/utils/index.js</span>
+<span class="token comment">// QI-AUTO-EXPORT</span>
+<span class="token keyword">import</span> a <span class="token keyword">from</span> <span class="token string">&quot;./a.js&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> b <span class="token keyword">from</span> <span class="token string">&quot;./a.js&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> c <span class="token keyword">from</span> <span class="token string">&quot;./a.js&quot;</span><span class="token punctuation">;</span>
+<span class="token operator">...</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    a<span class="token punctuation">,</span>
+    b<span class="token punctuation">,</span>
+    c<span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ./src/index.js</span>
+<span class="token comment">// QI-AUTO-EXPORT</span>
+<span class="token keyword">import</span> utils <span class="token keyword">from</span> <span class="token string">&quot;./utils/index.js&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> main <span class="token keyword">from</span> <span class="token string">&quot;./main/index.js&quot;</span><span class="token punctuation">;</span>
+<span class="token operator">...</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    utils<span class="token punctuation">,</span>
+    main<span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="custom-block warning"><p class="custom-block-title">注意</p> <p><code>qi-auto-export</code> 不会覆盖第一行不是 &quot;// QI-AUTO-EXPORT&quot; 开头的文件。</p></div> <h2 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h2> <h3 id="options-name"><a href="#options-name" class="header-anchor">#</a> options.name</h3> <blockquote><p>类型: String<br>
+默认值: &quot;index.js&quot;</p></blockquote> <p>指出入口文件应使用的名称。具体例子，比如提供了 <code>index.jsx</code>，那么 <code>qi-auto-export</code> 将仅检测 <code>index.jsx</code> 文件以进行 <code>import</code> 和 <code>export</code>。</p> <h3 id="options-type"><a href="#options-type" class="header-anchor">#</a> options.type</h3> <blockquote><p>类型：String<br>
+可用值：&quot;esm&quot; | &quot;cjs&quot;<br>
+默认值：&quot;esm&quot;</p></blockquote> <p>指示应使用哪种语法生成。对于ES6模块语法，使用 <code>esm</code> 可以使用 <code>import</code> 和 <code>export default</code> 生成代码，对于CommonJS语法使用 <code>cjs</code> 可以使用 <code>require</code> 和 <code>module.exports</code> 生成代码。</p> <h3 id="options-inject"><a href="#options-inject" class="header-anchor">#</a> options.inject</h3> <blockquote><p>可选的<br>
+类型：String | Function</p></blockquote> <p>该内容将在每个文件的 <code>import</code> 和 <code>export</code> 之间插入。</p> <p>如果提供了一个函数，将传递一个参数并进行调用，该参数的结构如下所示：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+    directory<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+    <span class="token comment">// 入口文件所在的目录路径</span>
+    imports<span class="token punctuation">:</span> Array<span class="token punctuation">,</span>
+    <span class="token comment">// 所有被导入的数据</span>
+    <span class="token comment">// [ { importName: &quot;...&quot;, importPath: &quot;...&quot; }, ... ]</span>
+    exports<span class="token punctuation">:</span> Array<span class="token punctuation">,</span>
+    <span class="token comment">// 所有被导出的数据</span>
+    <span class="token comment">// [ { exportName: &quot;...&quot;, exportPath: &quot;...&quot; }, ... ]</span>
+    defaultImports<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+    defaultExports<span class="token punctuation">:</span> String
+    <span class="token comment">// 从 `imports` and `exports` 生成的原本的导入和导出语句</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>请返回一个 <code>string</code> 类型。</p> <h3 id="options-overwriteimport-options-overwriteexport"><a href="#options-overwriteimport-options-overwriteexport" class="header-anchor">#</a> options.overwriteImport &amp;&amp; options.overwriteExport</h3> <p>此内容将覆盖 <code>qi-auto-export</code> 的 <code>import</code> 或 <code>export</code> 的默认行为。</p> <p>如果提供了一个函数，将传递一个参数并进行调用，其结构与 <code>options.inject</code> 段落中的结构相同。</p> <h2 id="返回值"><a href="#返回值" class="header-anchor">#</a> 返回值</h2> <p>您将获得一个具有以下属性的对象作为返回值。</p> <h3 id="watch"><a href="#watch" class="header-anchor">#</a> watch()</h3> <p>开始监测文件更改，并自动重新生成。</p> <h3 id="stop"><a href="#stop" class="header-anchor">#</a> stop()</h3> <p>停止监测。</p> <h3 id="once"><a href="#once" class="header-anchor">#</a> once()</h3> <p>仅生成一次 <code>入口文件（index.js）</code>。</p> <h3 id="adddirectorys-dirs"><a href="#adddirectorys-dirs" class="header-anchor">#</a> addDirectorys(dirs)</h3> <h4 id="array-dirs-要添加的目录数组"><a href="#array-dirs-要添加的目录数组" class="header-anchor">#</a> [Array] dirs - 要添加的目录数组</h4> <p>添加额外的需要自动生成 <code>入口文件（index.js）</code> 的目录。</p> <h3 id="addeventlistener-eventname-callback-removeeventlistener-eventname-callback"><a href="#addeventlistener-eventname-callback-removeeventlistener-eventname-callback" class="header-anchor">#</a> addEventListener(eventName, callback) &amp;&amp; removeEventListener(eventName, callback)</h3> <h4 id="string-eventname-事件名"><a href="#string-eventname-事件名" class="header-anchor">#</a> [String] eventName - 事件名</h4> <h4 id="array-callback-回调函数"><a href="#array-callback-回调函数" class="header-anchor">#</a> [Array] callback - 回调函数</h4> <p>以下是 <code>eventName</code> 的允许值:</p> <ul><li>done - 所有 <code>入口文件</code> 均已写入完毕。</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/SaekiRaku/qi-auto/edit/master/docs/zh/modules/export.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">2019/11/27 下午10:15:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/qi-auto/zh/modules/webpack-entry.html" class="prev">webpack-entry</a></span> <span class="next"><a href="/qi-auto/zh/modules/community-modules.html">社区模块</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/qi-auto/assets/js/app.64ecc225.js" defer></script><script src="/qi-auto/assets/js/2.240bca11.js" defer></script><script src="/qi-auto/assets/js/24.2c9b250d.js" defer></script>
+  </body>
+</html>

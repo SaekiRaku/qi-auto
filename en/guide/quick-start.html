@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quick Start | Qi Auto</title>
+    <meta name="description" content="A tool help you generate config object based on directory structure for webpack, rollup, parcel, vue-router, etc.">
+    <script src="http://tajs.qq.com/stats?sId=65846734"></script>
+    
+    <link rel="preload" href="/qi-auto/assets/css/0.styles.d41e1296.css" as="style"><link rel="preload" href="/qi-auto/assets/js/app.64ecc225.js" as="script"><link rel="preload" href="/qi-auto/assets/js/2.240bca11.js" as="script"><link rel="preload" href="/qi-auto/assets/js/11.685a9337.js" as="script"><link rel="prefetch" href="/qi-auto/assets/js/10.ba4c0c7b.js"><link rel="prefetch" href="/qi-auto/assets/js/12.54ff49a5.js"><link rel="prefetch" href="/qi-auto/assets/js/13.203ce99a.js"><link rel="prefetch" href="/qi-auto/assets/js/14.06b8c610.js"><link rel="prefetch" href="/qi-auto/assets/js/15.42e1ebcf.js"><link rel="prefetch" href="/qi-auto/assets/js/16.7bfd09ab.js"><link rel="prefetch" href="/qi-auto/assets/js/17.a46c3810.js"><link rel="prefetch" href="/qi-auto/assets/js/18.1fa44c4e.js"><link rel="prefetch" href="/qi-auto/assets/js/19.44287fb2.js"><link rel="prefetch" href="/qi-auto/assets/js/20.c92faf60.js"><link rel="prefetch" href="/qi-auto/assets/js/21.3b38a97e.js"><link rel="prefetch" href="/qi-auto/assets/js/22.b094a19c.js"><link rel="prefetch" href="/qi-auto/assets/js/23.7112cf23.js"><link rel="prefetch" href="/qi-auto/assets/js/24.2c9b250d.js"><link rel="prefetch" href="/qi-auto/assets/js/25.8b5a244d.js"><link rel="prefetch" href="/qi-auto/assets/js/26.1eece765.js"><link rel="prefetch" href="/qi-auto/assets/js/3.c3f38d17.js"><link rel="prefetch" href="/qi-auto/assets/js/4.4118a250.js"><link rel="prefetch" href="/qi-auto/assets/js/5.4706ecb5.js"><link rel="prefetch" href="/qi-auto/assets/js/6.3bfc0636.js"><link rel="prefetch" href="/qi-auto/assets/js/7.af9f8d4e.js"><link rel="prefetch" href="/qi-auto/assets/js/8.a244375f.js"><link rel="prefetch" href="/qi-auto/assets/js/9.f37b2388.js">
+    <link rel="stylesheet" href="/qi-auto/assets/css/0.styles.d41e1296.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/qi-auto/en/" class="home-link router-link-active"><!----> <span class="site-name">Qi Auto</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/qi-auto/en/guide/" class="nav-link router-link-active">Guide</a></div><div class="nav-item"><a href="/qi-auto/en/modules/" class="nav-link">Modules</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/qi-auto/en/guide/quick-start.html" class="nav-link router-link-exact-active router-link-active">English</a></li><li class="dropdown-item"><!----> <a href="/qi-auto/zh/guide/quick-start.html" class="nav-link">简体中文</a></li></ul></div></div> <a href="https://github.com/SaekiRaku/qi-auto" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/qi-auto/en/guide/" class="nav-link router-link-active">Guide</a></div><div class="nav-item"><a href="/qi-auto/en/modules/" class="nav-link">Modules</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/qi-auto/en/guide/quick-start.html" class="nav-link router-link-exact-active router-link-active">English</a></li><li class="dropdown-item"><!----> <a href="/qi-auto/zh/guide/quick-start.html" class="nav-link">简体中文</a></li></ul></div></div> <a href="https://github.com/SaekiRaku/qi-auto" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/qi-auto/en/guide/introduction.html" class="sidebar-link">Introduction</a></li><li><a href="/qi-auto/en/guide/quick-start.html" class="active sidebar-link">Quick Start</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/quick-start.html#installation" class="sidebar-link">Installation</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/quick-start.html#enable-localization" class="sidebar-link">Enable Localization</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/quick-start.html#simple-example" class="sidebar-link">Simple Example</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/quick-start.html#complicated-example" class="sidebar-link">Complicated Example</a></li></ul></li><li><a href="/qi-auto/en/guide/advanced-config.html" class="sidebar-link">Advanced Config</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/advanced-config.html#directory" class="sidebar-link">directory</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/advanced-config.html#filter" class="sidebar-link">filter</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/advanced-config.html#module" class="sidebar-link">module</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/advanced-config.html#options" class="sidebar-link">options</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/advanced-config.html#callback" class="sidebar-link">callback</a></li></ul></li><li><a href="/qi-auto/en/guide/modules.html" class="sidebar-link">Modules</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/modules.html#official-modules" class="sidebar-link">Official Modules</a></li><li class="sidebar-sub-header"><a href="/qi-auto/en/guide/modules.html#develop-modules" class="sidebar-link">Develop Modules</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="quick-start"><a href="#quick-start" class="header-anchor">#</a> Quick Start</h1> <h2 id="installation"><a href="#installation" class="header-anchor">#</a> Installation</h2> <div class="language- extra-class"><pre class="language-text"><code>npm i --save-dev @qiqi1996/qi-auto
+</code></pre></div><h2 id="enable-localization"><a href="#enable-localization" class="header-anchor">#</a> Enable Localization</h2> <p><code>qi-auto</code> has provide localized error output for non-native English users(not perfectly by now), if you need enable this feature, please change the language of this document.</p> <h2 id="simple-example"><a href="#simple-example" class="header-anchor">#</a> Simple Example</h2> <blockquote><p>This example has used an offical module <code>webpack-entry</code>, you can find it's documentation at <a href="/qi-auto/en/modules/webpack-entry.html">here</a></p></blockquote> <p>Let's have a quick look on how to generate a <code>webpack</code>'s <code>entry</code> config of multipage application.</p> <p>Assume you have a project that directory structure is like below:</p> <div class="language- extra-class"><pre class="language-text"><code>./src
+├── about.js
+├── download.js
+├── index.js
+└── ...(maybe more than 100 files)
+</code></pre></div><p>Each js file is an <code>entry point</code> for webpack. Normally, you have to write a config object like this:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        about<span class="token punctuation">:</span> <span class="token string">&quot;path/to/about.js&quot;</span><span class="token punctuation">,</span>
+        download<span class="token punctuation">:</span> <span class="token string">&quot;path/to/download.js&quot;</span><span class="token punctuation">,</span>
+        index<span class="token punctuation">:</span> <span class="token string">&quot;path/to/index.js&quot;</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Even if your application doesn't have hundreds of pages, it's still an annoying job to add <code>entry point</code> whenever your project gets another new page.</p> <p>Now, let's see how <code>qi-auto</code> deal with it:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> qiauto <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;@qiqi1996/qi-auto&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;WebpackEntry&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Named a task</span>
+        directory<span class="token punctuation">:</span> __dirname <span class="token operator">+</span> <span class="token string">&quot;/src&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// The directory that need traversing </span>
+        filter<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+        <span class="token comment">// Filter files</span>
+        module<span class="token punctuation">:</span> <span class="token string">&quot;webpack-entry&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// Choose a module to handle with these files</span>
+        <span class="token comment">// webpack-entry is an offical module, so you don't need to install it</span>
+        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Options for webpack-entry</span>
+            name<span class="token punctuation">:</span> <span class="token string">&quot;[name]&quot;</span>
+            <span class="token comment">// Use file's name as webpack `entry`'s key</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">qiauto</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> result<span class="token punctuation">.</span>WebpackEntry
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>result.WebpackEntry</code> is as same as the config that you write by hand before. And this is totally automatic generated.</p> <h2 id="complicated-example"><a href="#complicated-example" class="header-anchor">#</a> Complicated Example</h2> <blockquote><p>This example has used an offical module <code>webpack-entry</code>, you can find it's documentation at <a href="/qi-auto/en/modules/webpack-entry.html">here</a></p></blockquote> <p>Most of the time, it's very difficult to maintain the project if all modules are inside the same folder. So let's organize our <code>entry points</code> by putting them and their relation modules inside a named folder.</p> <div class="language- extra-class"><pre class="language-text"><code>./src
+├── about
+│   ├── a.js
+│   ├── b.js
+│   └── index.js
+└── index
+│   ├── c.js
+│   └── index.js
+│
+└── and so many...
+</code></pre></div><p>Each <code>index.js</code> file inside the folder is an <code>entry point</code> for webpack, and most likely you'll need a polyfill for each <code>entry point</code> (such as <code>@babel/polyfill</code>) to be compatible with IE or other elder browsers. Normally, you have to write a config object like this:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        about<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/polyfill&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;path/to/about/index.js&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        index<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/polyfill&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;path/to/index/index.js&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Now, let's see how <code>qi-auto-webpack-entry</code> deal with it:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> qiauto <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;@qiqi1996/qi-auto&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;WebpackEntry&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        directory<span class="token punctuation">:</span> __dirname <span class="token operator">+</span> <span class="token string">&quot;/src&quot;</span><span class="token punctuation">,</span>
+        filter<span class="token punctuation">:</span> <span class="token regex">/\index.js$/</span><span class="token punctuation">,</span>
+        module<span class="token punctuation">:</span> <span class="token string">&quot;webpack-entry&quot;</span><span class="token punctuation">,</span>
+        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            name<span class="token punctuation">:</span> <span class="token string">&quot;[folder]&quot;</span>
+            <span class="token comment">// Use folder name where file's located as webpack `entry`'s key</span>
+            prechunks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/polyfill&quot;</span><span class="token punctuation">]</span>
+            <span class="token comment">// Need @babel/polyfill before entry points</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">qiauto</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> result<span class="token punctuation">.</span>WebpackEntry
+    <span class="token comment">// result.WebpackEntry is as same as the config that you write by hand before. And this is totally automatic generated.</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/SaekiRaku/qi-auto/edit/master/docs/en/guide/quick-start.md" target="_blank" rel="noopener noreferrer">Help us improve this page!</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">11/27/2019, 10:15:29 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/qi-auto/en/guide/introduction.html" class="prev">Introduction</a></span> <span class="next"><a href="/qi-auto/en/guide/advanced-config.html">Advanced Config</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/qi-auto/assets/js/app.64ecc225.js" defer></script><script src="/qi-auto/assets/js/2.240bca11.js" defer></script><script src="/qi-auto/assets/js/11.685a9337.js" defer></script>
+  </body>
+</html>
