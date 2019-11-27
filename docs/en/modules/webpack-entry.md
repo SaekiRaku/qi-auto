@@ -4,6 +4,8 @@
 
 Generate the config of webpack entry for muti-page application.
 
+This is a built-in module, so you don't need to install it. But it will move to a independent npm package in the future.
+
 ## Example
 
 Assume you have a muti-page application which directory structure is like this:

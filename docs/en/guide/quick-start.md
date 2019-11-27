@@ -6,9 +6,13 @@
 npm i --save-dev @qiqi1996/qi-auto
 ```
 
+## Enable Localization
+
+`qi-auto` has provide localized error output for non-native English users(not perfectly by now), if you need enable this feature, please change the language of this document.
+
 ## Simple Example
 
-> This example has used a built-in module `webpack-entry`, you can find it's documentation at [here](../modules/webpack-entry.md)
+> This example has used an offical module `webpack-entry`, you can find it's documentation at [here](../modules/webpack-entry.md)
 
 Let's have a quick look on how to generate a `webpack`'s `entry` config of multipage application.
 
@@ -51,7 +55,7 @@ const config = {
         // Filter files
         module: "webpack-entry",
         // Choose a module to handle with these files
-        // webpack-entry is a built-in module, so you don't need to install it
+        // webpack-entry is an offical module, so you don't need to install it
         options: {
             // Options for webpack-entry
             name: "[name]"
@@ -70,7 +74,7 @@ module.exports = {
 `result.WebpackEntry` is as same as the config that you write by hand before. And this is totally automatic generated.
 
 ## Complicated Example
-> This example has used a built-in module `webpack-entry`, you can find it's documentation at [here](../modules/webpack-entry.md)
+> This example has used an offical module `webpack-entry`, you can find it's documentation at [here](../modules/webpack-entry.md)
 
 Most of the time, it's very difficult to maintain the project if all modules are inside the same folder. So let's organize our `entry points` by putting them and their relation modules inside a named folder.
 

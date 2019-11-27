@@ -6,9 +6,25 @@
 npm i --save-dev @qiqi1996/qi-auto
 ```
 
+## 开启本地化
+
+`qi-auto` 为非惯用英语的用户提供了本地化的错误输出（暂未完全支持），如需开启请使用如下的代码：
+
+```javascript
+import { Localization } from "@qiqi1996/qi-auto";
+
+Localization("zh_CN");
+// 开启简体中文输出
+```
+
+目前本地化支持以下语言：
+
+- 简体中文 - zh_CN
+- 英语（默认） - en
+
 ## 简单示例
 
-> 该示例使用了内置模块 `webpack-entry`，您可以在[这里](../modules/webpack-entry.md)找到其文档。
+> 该示例使用了官方模块 `webpack-entry`，您可以在[这里](../modules/webpack-entry.md)找到其文档。
 
 让我们快速了解一下如何为多页应用程序生成 `webpack entry` 的配置吧。
 
@@ -51,7 +67,7 @@ const config = {
         // 过滤文件
         module: "webpack-entry",
         // 选择一个模块来处理这些文件
-        // `webpack-entry` 是一个内置模块，因此您无需安装它
+        // `webpack-entry` 是一个官方模块，因此您无需安装它
         options: {
             // 该模块可配置的对象
             name: "[name]"
@@ -71,7 +87,7 @@ module.exports = {
 
 ## 复杂示例
 
-> 该示例使用了内置模块 `webpack-entry`，您可以在[这里](../modules/webpack-entry.md)找到其文档。
+> 该示例使用了官方模块 `webpack-entry`，您可以在[这里](../modules/webpack-entry.md)找到其文档。
 
 在大多数情况下，如果所有模块都位于同一文件夹中，会使项目很难维护。因此，让我们稍微整理一下目录结构。
 

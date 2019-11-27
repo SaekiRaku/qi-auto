@@ -1,11 +1,12 @@
 # 模块
 
-## 内置模块
+## 官方模块
 
-此页面仅显示内置模块的列表，请访问 [模块](../modules) 页面以获取详细文档。
+此页面仅显示官方模块的列表，请访问各个模块的主页以获取详细文档。
 
-* **webpack-entry** - 为 webpack 的 entry 属性生成配置 [文档→](../modules/webpack-entry.md)
-* **export** - 自动生成模块的引入和导出文件 [文档→](../modules/export.md)
+* **qi-auto-webpack-entry** - 为 webpack 的 entry 属性生成配置 [文档→](../modules/webpack-entry.md)
+* **qi-auto-export** - 自动生成模块的引入和导出文件 [文档→](../modules/export.md)
+* **qi-auto-rollup** - 为 Rollup 自动生成配置项 [文档→](https://github.com/SaekiRaku/qi-auto-rollup)
 
 ## 开发模块
 
@@ -72,6 +73,21 @@ const config = {
 * 返回值：Array
 
 该函数的行为与 `this.filtered` 的行为相同。`list` 表示文件数组，`filter` 是RegExp对象。
+
+#### this.events <Badge text="新增" />
+
+> v1.2.0 版本新增
+
+
+* 类型：Object
+
+该对象包含2个函数，分别是 `register` 和 `dispatch`。将事件名称（字符串类型）和回调函数传递给 `register` 并调用以注册事件。要使用这些回调，应将事件名称和你需要的任何参数传给 `dispatch` 并调用。
+
+### 调度事件
+
+大多数情况下，用户希望在处理模块时了解其进度。您应该使用 `this.events.dispatch()` 来告知用户。
+
+当用户有 `callback` 传入任务配置时，`qi-auto` 将使用事件名称 `default` 来注册这些回调。因此，您可以通过调用 `this.events.dispatch("default", args)` 来通知人们何时出现问题或一切正常。`args` 的结构由您定义，请确保在您的文档中清楚地描述它。
 
 ### 返回结果
 

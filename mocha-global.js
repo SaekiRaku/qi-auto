@@ -1,4 +1,4 @@
 global.common = require("./common").default || require("./common");
-global.qiauto = require("./source").default || require("./source");
+global.qiauto = require("./dist/qi-auto").default || require("./dist/qi-auto");
 
 common.console.disable();

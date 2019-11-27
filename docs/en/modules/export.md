@@ -4,6 +4,8 @@
 
 Generate import and export code.
 
+This is a built-in module, so you don't need to install it. But it will move to a independent npm package in the future.
+
 ## Example
 
 Assume you developed a library/module which has a directory structure like this:

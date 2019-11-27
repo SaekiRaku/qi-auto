@@ -1,5 +1,7 @@
-import qiauto from "../source/index.js";
+import qiauto, { Localization } from "../source/index.js";
 
-var result = qiauto(__dirname + "/auto-config.js");
+Localization("zh_CN");
+
+var result = new qiauto(require(__dirname + "/auto-config.js"));
 
 result.AutoExport.watch();

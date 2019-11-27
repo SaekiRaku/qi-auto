@@ -1,11 +1,12 @@
 # Modules
 
-## Built-in Modules
+## Official Modules
 
-This page only shows the built-in modules list, please visit [Module](../modules) page for their details documentation.
+This page only shows the official modules list, please visit each modules homepage for their details documents.
 
-* **webpack-entry** - Generate config for webpack entry property. [Doc→](../modules/webpack-entry.md)
-* **export** - Generate code for import and export modules. [Doc→](../modules/export.md)
+* **qi-auto-webpack-entry <Badge text="Built-in"/>** - Generate config for webpack entry property. [Doc→](../modules/webpack-entry.md)
+* **qi-auto-export <Badge text="Built-in"/>** - Generate code for import and export modules. [Doc→](../modules/export.md)
+* **qi-auto-rollup** - Automatically generate config for rollup. [Doc→](https://github.com/SaekiRaku/qi-auto-rollup)
 
 ## Develop Modules
 
@@ -72,6 +73,20 @@ All files of `this.files` that matched the `config.filter`.
 * Return: Array
 
 This function is doing the same as the behaviour of `this.filtered`. `list` means files array, and `filter` is a RegExp object.
+
+#### this.events <Badge text="NEW" />
+
+> Add at v1.2.0
+
+* Type: Object
+
+This object contains 2 functions, `register` and `dispatch`. Pass the event name (string type) and a callback function to `register` and call to register the event. To use these callbacks, pass the event name and any parameters you need to `dispatch` and call it.
+
+### Dispatch Events
+
+Most of the time, users want to know the progress of your module when it's processing. You should inform them by using `this.events.dispatch()`.
+
+When users have pass `callback` to the task config, `qi-auto` will register those callback with the event name of `default`. So you can inform people when things went wrong or everything is fine by calling `this.events.dispatch("default", args)`. The structure of `args` are defined by you, make sure it will be described clearly in your document. 
 
 ### Return Result
 

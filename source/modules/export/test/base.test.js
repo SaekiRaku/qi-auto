@@ -30,7 +30,7 @@ function exportOnce(fs, options) {
     })
 }
 
-describe("Built-in module of Export", function () {
+describe("Offical module of Export", function () {
 
     describe("base", function () {
         describe("options.name", function () {

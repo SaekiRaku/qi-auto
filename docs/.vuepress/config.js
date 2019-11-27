@@ -4,7 +4,7 @@ function i18N(language, str) {
     }
     var l = {
         "zh": {
-            "Built-in Modules": "內建模块",
+            "Offical Modules": "官方模块",
             "From Community": "来自社区"
         }
     }
@@ -22,7 +22,7 @@ function sidebar(prefix) {
     ]
 
     result["/" + prefix + "/modules/"] = [{
-            title: i18N(prefix, "Built-in Modules"),
+            title: i18N(prefix, "Offical Modules"),
             collapsable: false,
             children: [
                 "webpack-entry",

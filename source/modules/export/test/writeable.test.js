@@ -1,7 +1,7 @@
 import assert from "assert";
 import Writeable from "../writeable.js";
 
-describe("Built-in module of Export", function () {
+describe("Offical module of Export", function () {
 
     const sandbox = new common.sandbox();
 
