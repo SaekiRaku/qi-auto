@@ -16,7 +16,7 @@ class Events {
         }
     }
 
-    dispatch(eventname, args) {
+    dispatch(eventname, ...args) {
         for (let i in this.callbacks[eventname]) {
             this.callbacks[eventname][i].call({}, args);
         }

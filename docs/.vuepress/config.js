@@ -42,6 +42,11 @@ function sidebar(prefix) {
 }
 
 module.exports = {
+    head: [
+        ["script", {
+            src: "http://tajs.qq.com/stats?sId=65846734"
+        }]
+    ],
     plugins: [
         '@vuepress/active-header-links',
         '@vuepress/back-to-top',

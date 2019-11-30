@@ -85,7 +85,7 @@ class Events {
     }
   }
 
-  dispatch(eventname, args) {
+  dispatch(eventname, ...args) {
     for (let i in this.callbacks[eventname]) {
       this.callbacks[eventname][i].call({}, args);
     }
@@ -161,7 +161,7 @@ class Context {
     }
 
     if (task.filter) {
-      this.filtered = filter(files, task.filter);
+      this.filtered = filter(this.files, task.filter);
     }
 
     task.callback && this.events.register("default", task.callback);

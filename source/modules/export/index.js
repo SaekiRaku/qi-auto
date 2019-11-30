@@ -13,5 +13,8 @@ export default function (options) {
     let exporter = new Exporter(opts);
     exporter.addDirectorys(this.directory);
     exporter.addDirectorys(this.filtered.length ? this.filtered : this.files);
+    // exporter.addEventListener("done", () => {
+    //     this.events.dispatch("default");
+    // })
     return exporter;
 }

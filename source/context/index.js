@@ -40,7 +40,7 @@ class Context {
         }
 
         if (task.filter) {
-            this.filtered = filter(files, task.filter);
+            this.filtered = filter(this.files, task.filter);
         }
 
         task.callback && this.events.register("default", task.callback);
