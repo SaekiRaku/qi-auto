@@ -20,7 +20,7 @@
     "@vuepress/plugin-back-to-top": "^1.2.0",
     "@vuepress/plugin-nprogress": "^1.2.0",
     "esm": "^3.2.25",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "rollup": "^1.26.5",
     "rollup-plugin-babel": "^4.3.3",
     "uuid": "^3.3.3",
